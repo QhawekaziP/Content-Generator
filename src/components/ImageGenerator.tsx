@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { Loader2, Download, ImageIcon } from "lucide-react";
+import { Loader2, Download } from "lucide-react";
 
 const ImageGenerator = () => {
   const [prompt, setPrompt] = useState("");
@@ -32,7 +32,7 @@ const ImageGenerator = () => {
       }
 
       setImageUrl(data.imageUrl);
-      toast.success("Image generated successfully!");
+      toast.success("Image generated");
     } catch (error) {
       console.error("Error generating image:", error);
       toast.error("Failed to generate image");
@@ -46,65 +46,56 @@ const ImageGenerator = () => {
     
     const link = document.createElement("a");
     link.href = imageUrl;
-    link.download = `generated-image-${Date.now()}.png`;
+    link.download = `image-${Date.now()}.png`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    toast.success("Image downloaded!");
+    toast.success("Downloaded");
   };
 
   return (
     <div className="space-y-6">
-      <div className="space-y-2">
-        <label className="text-sm font-medium">Describe your image</label>
-        <Textarea
-          placeholder="A futuristic cityscape at sunset with flying cars..."
-          value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
-          className="min-h-[120px] bg-background/50 border-border/50 focus:border-primary transition-colors"
-          disabled={isLoading}
-        />
-      </div>
+      <Textarea
+        placeholder="Describe the image you want to create..."
+        value={prompt}
+        onChange={(e) => setPrompt(e.target.value)}
+        className="min-h-[100px] resize-none"
+        disabled={isLoading}
+      />
 
       <Button 
         onClick={handleGenerate} 
         disabled={isLoading}
-        className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity"
-        size="lg"
+        className="w-full"
       >
         {isLoading ? (
           <>
-            <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-            Generating...
+            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+            Generating
           </>
         ) : (
-          <>
-            <ImageIcon className="mr-2 h-5 w-5" />
-            Generate Image
-          </>
+          "Generate Image"
         )}
       </Button>
 
       {imageUrl && (
-        <div className="space-y-4 animate-in fade-in-50 duration-500">
-          <div className="relative group rounded-lg overflow-hidden border border-border/50 bg-secondary/20">
+        <div className="space-y-3 animate-in fade-in-50 duration-300">
+          <div className="relative rounded border bg-muted/20 overflow-hidden">
             <img 
               src={imageUrl} 
               alt="Generated" 
               className="w-full h-auto"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-6">
-              <Button
-                onClick={handleDownload}
-                variant="secondary"
-                size="sm"
-                className="gap-2"
-              >
-                <Download className="h-4 w-4" />
-                Download
-              </Button>
-            </div>
           </div>
+          <Button
+            onClick={handleDownload}
+            variant="outline"
+            size="sm"
+            className="w-full"
+          >
+            <Download className="mr-2 h-4 w-4" />
+            Download
+          </Button>
         </div>
       )}
     </div>
