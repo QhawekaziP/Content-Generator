@@ -1,0 +1,10 @@
+project_id = "rkxyfcbymoykjriovjzo"
+
+[functions.generate-image]
+verify_jwt = false
+
+[functions.generate-text]
+verify_jwt = false
+
+[functions.generate-code]
+verify_jwt = false
