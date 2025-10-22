@@ -111,8 +111,8 @@ const ImageGenerator = () => {
             </Button>
             <Button
               onClick={() => {
-                const shareUrl = `https://twitter.com/intent/tweet?text=Check out this AI-generated image!&url=${encodeURIComponent(imageUrl)}`;
-                window.open(shareUrl, '_blank');
+                window.open('https://www.instagram.com/', '_blank');
+                toast.success("Opening Instagram - you can upload the downloaded image");
               }}
               variant="outline"
               size="sm"

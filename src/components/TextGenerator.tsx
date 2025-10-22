@@ -92,8 +92,8 @@ const TextGenerator = () => {
             </Button>
             <Button
               onClick={() => {
-                const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(generatedText)}`;
-                window.open(shareUrl, '_blank');
+                window.open('https://www.instagram.com/', '_blank');
+                toast.success("Opening Instagram - paste your text there");
               }}
               variant="outline"
               size="sm"

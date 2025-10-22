@@ -92,8 +92,8 @@ const CodeGenerator = () => {
             </Button>
             <Button
               onClick={() => {
-                const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent('Check out this AI-generated code!\n\n' + generatedCode.substring(0, 200) + '...')}`;
-                window.open(shareUrl, '_blank');
+                window.open('https://www.instagram.com/', '_blank');
+                toast.success("Opening Instagram - paste your code there");
               }}
               variant="outline"
               size="sm"
