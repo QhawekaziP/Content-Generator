@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { Loader2, Copy } from "lucide-react";
+import { Loader2, Copy, Share2 } from "lucide-react";
 
 const CodeGenerator = () => {
   const [prompt, setPrompt] = useState("");
@@ -80,15 +80,29 @@ const CodeGenerator = () => {
               <code>{generatedCode}</code>
             </pre>
           </div>
-          <Button
-            onClick={handleCopy}
-            variant="outline"
-            size="sm"
-            className="w-full"
-          >
-            <Copy className="mr-2 h-4 w-4" />
-            Copy
-          </Button>
+          <div className="flex gap-2">
+            <Button
+              onClick={handleCopy}
+              variant="outline"
+              size="sm"
+              className="flex-1"
+            >
+              <Copy className="mr-2 h-4 w-4" />
+              Copy
+            </Button>
+            <Button
+              onClick={() => {
+                const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent('Check out this AI-generated code!\n\n' + generatedCode.substring(0, 200) + '...')}`;
+                window.open(shareUrl, '_blank');
+              }}
+              variant="outline"
+              size="sm"
+              className="flex-1"
+            >
+              <Share2 className="mr-2 h-4 w-4" />
+              Share
+            </Button>
+          </div>
         </div>
       )}
     </div>

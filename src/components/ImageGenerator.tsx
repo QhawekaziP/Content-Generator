@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { Loader2, Download } from "lucide-react";
+import { Loader2, Download, Copy, Share2 } from "lucide-react";
 
 const ImageGenerator = () => {
   const [prompt, setPrompt] = useState("");
@@ -87,15 +87,41 @@ const ImageGenerator = () => {
               className="w-full h-auto"
             />
           </div>
-          <Button
-            onClick={handleDownload}
-            variant="outline"
-            size="sm"
-            className="w-full"
-          >
-            <Download className="mr-2 h-4 w-4" />
-            Download
-          </Button>
+          <div className="flex gap-2">
+            <Button
+              onClick={() => {
+                navigator.clipboard.writeText(imageUrl);
+                toast.success("Copied");
+              }}
+              variant="outline"
+              size="sm"
+              className="flex-1"
+            >
+              <Copy className="mr-2 h-4 w-4" />
+              Copy
+            </Button>
+            <Button
+              onClick={handleDownload}
+              variant="outline"
+              size="sm"
+              className="flex-1"
+            >
+              <Download className="mr-2 h-4 w-4" />
+              Download
+            </Button>
+            <Button
+              onClick={() => {
+                const shareUrl = `https://twitter.com/intent/tweet?text=Check out this AI-generated image!&url=${encodeURIComponent(imageUrl)}`;
+                window.open(shareUrl, '_blank');
+              }}
+              variant="outline"
+              size="sm"
+              className="flex-1"
+            >
+              <Share2 className="mr-2 h-4 w-4" />
+              Share
+            </Button>
+          </div>
         </div>
       )}
     </div>
