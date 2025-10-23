@@ -87,40 +87,76 @@ const ImageGenerator = () => {
               className="w-full h-auto"
             />
           </div>
-          <div className="flex gap-2">
-            <Button
-              onClick={() => {
-                navigator.clipboard.writeText(imageUrl);
-                toast.success("Copied");
-              }}
-              variant="outline"
-              size="sm"
-              className="flex-1"
-            >
-              <Copy className="mr-2 h-4 w-4" />
-              Copy
-            </Button>
-            <Button
-              onClick={handleDownload}
-              variant="outline"
-              size="sm"
-              className="flex-1"
-            >
-              <Download className="mr-2 h-4 w-4" />
-              Download
-            </Button>
-            <Button
-              onClick={() => {
-                window.open('https://www.instagram.com/', '_blank');
-                toast.success("Opening Instagram - you can upload the downloaded image");
-              }}
-              variant="outline"
-              size="sm"
-              className="flex-1"
-            >
-              <Share2 className="mr-2 h-4 w-4" />
-              Share
-            </Button>
+          <div className="space-y-2">
+            <div className="flex gap-2">
+              <Button
+                onClick={() => {
+                  navigator.clipboard.writeText(imageUrl);
+                  toast.success("Copied");
+                }}
+                variant="outline"
+                size="sm"
+                className="flex-1"
+              >
+                <Copy className="mr-2 h-4 w-4" />
+                Copy
+              </Button>
+              <Button
+                onClick={handleDownload}
+                variant="outline"
+                size="sm"
+                className="flex-1"
+              >
+                <Download className="mr-2 h-4 w-4" />
+                Download
+              </Button>
+            </div>
+            <div className="grid grid-cols-4 gap-2">
+              <Button
+                onClick={() => {
+                  window.open('https://www.instagram.com/', '_blank');
+                  toast.success("Opening Instagram");
+                }}
+                variant="outline"
+                size="sm"
+              >
+                <Share2 className="mr-2 h-4 w-4" />
+                IG
+              </Button>
+              <Button
+                onClick={() => {
+                  window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(imageUrl)}`, '_blank');
+                  toast.success("Opening Facebook");
+                }}
+                variant="outline"
+                size="sm"
+              >
+                <Share2 className="mr-2 h-4 w-4" />
+                FB
+              </Button>
+              <Button
+                onClick={() => {
+                  window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(imageUrl)}`, '_blank');
+                  toast.success("Opening LinkedIn");
+                }}
+                variant="outline"
+                size="sm"
+              >
+                <Share2 className="mr-2 h-4 w-4" />
+                LI
+              </Button>
+              <Button
+                onClick={() => {
+                  window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(imageUrl)}`, '_blank');
+                  toast.success("Opening X");
+                }}
+                variant="outline"
+                size="sm"
+              >
+                <Share2 className="mr-2 h-4 w-4" />
+                X
+              </Button>
+            </div>
           </div>
         </div>
       )}

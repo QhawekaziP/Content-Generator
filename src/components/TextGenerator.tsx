@@ -80,28 +80,62 @@ const TextGenerator = () => {
               {generatedText}
             </p>
           </div>
-          <div className="flex gap-2">
+          <div className="space-y-2">
             <Button
               onClick={handleCopy}
               variant="outline"
               size="sm"
-              className="flex-1"
+              className="w-full"
             >
               <Copy className="mr-2 h-4 w-4" />
               Copy
             </Button>
-            <Button
-              onClick={() => {
-                window.open('https://www.instagram.com/', '_blank');
-                toast.success("Opening Instagram - paste your text there");
-              }}
-              variant="outline"
-              size="sm"
-              className="flex-1"
-            >
-              <Share2 className="mr-2 h-4 w-4" />
-              Share
-            </Button>
+            <div className="grid grid-cols-4 gap-2">
+              <Button
+                onClick={() => {
+                  window.open('https://www.instagram.com/', '_blank');
+                  toast.success("Opening Instagram");
+                }}
+                variant="outline"
+                size="sm"
+              >
+                <Share2 className="mr-2 h-4 w-4" />
+                IG
+              </Button>
+              <Button
+                onClick={() => {
+                  window.open(`https://www.facebook.com/sharer/sharer.php?quote=${encodeURIComponent(generatedText || '')}`, '_blank');
+                  toast.success("Opening Facebook");
+                }}
+                variant="outline"
+                size="sm"
+              >
+                <Share2 className="mr-2 h-4 w-4" />
+                FB
+              </Button>
+              <Button
+                onClick={() => {
+                  window.open('https://www.linkedin.com/feed/', '_blank');
+                  toast.success("Opening LinkedIn - paste your text there");
+                }}
+                variant="outline"
+                size="sm"
+              >
+                <Share2 className="mr-2 h-4 w-4" />
+                LI
+              </Button>
+              <Button
+                onClick={() => {
+                  window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(generatedText || '')}`, '_blank');
+                  toast.success("Opening X");
+                }}
+                variant="outline"
+                size="sm"
+              >
+                <Share2 className="mr-2 h-4 w-4" />
+                X
+              </Button>
+            </div>
           </div>
         </div>
       )}
