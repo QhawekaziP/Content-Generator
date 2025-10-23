@@ -4,7 +4,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { Loader2, Copy, Share2 } from "lucide-react";
+import { Loader2, Copy, Instagram, Facebook, Linkedin, Twitter } from "lucide-react";
 
 const CodeGenerator = () => {
   const [prompt, setPrompt] = useState("");
@@ -122,7 +122,7 @@ const CodeGenerator = () => {
                 variant="outline"
                 size="sm"
               >
-                <Share2 className="mr-2 h-4 w-4" />
+                <Instagram className="mr-2 h-4 w-4" />
                 IG
               </Button>
               <Button
@@ -133,7 +133,7 @@ const CodeGenerator = () => {
                 variant="outline"
                 size="sm"
               >
-                <Share2 className="mr-2 h-4 w-4" />
+                <Facebook className="mr-2 h-4 w-4" />
                 FB
               </Button>
               <Button
@@ -144,7 +144,7 @@ const CodeGenerator = () => {
                 variant="outline"
                 size="sm"
               >
-                <Share2 className="mr-2 h-4 w-4" />
+                <Linkedin className="mr-2 h-4 w-4" />
                 LI
               </Button>
               <Button
@@ -155,7 +155,7 @@ const CodeGenerator = () => {
                 variant="outline"
                 size="sm"
               >
-                <Share2 className="mr-2 h-4 w-4" />
+                <Twitter className="mr-2 h-4 w-4" />
                 X
               </Button>
             </div>

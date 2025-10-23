@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { Loader2, Copy, Share2 } from "lucide-react";
+import { Loader2, Copy, Instagram, Facebook, Linkedin, Twitter } from "lucide-react";
 
 const TextGenerator = () => {
   const [prompt, setPrompt] = useState("");
@@ -94,12 +94,12 @@ const TextGenerator = () => {
               <Button
                 onClick={() => {
                   window.open('https://www.instagram.com/', '_blank');
-                  toast.success("Opening Instagram");
+                  toast.success("Opening Instagram - paste your text there");
                 }}
                 variant="outline"
                 size="sm"
               >
-                <Share2 className="mr-2 h-4 w-4" />
+                <Instagram className="mr-2 h-4 w-4" />
                 IG
               </Button>
               <Button
@@ -110,7 +110,7 @@ const TextGenerator = () => {
                 variant="outline"
                 size="sm"
               >
-                <Share2 className="mr-2 h-4 w-4" />
+                <Facebook className="mr-2 h-4 w-4" />
                 FB
               </Button>
               <Button
@@ -121,7 +121,7 @@ const TextGenerator = () => {
                 variant="outline"
                 size="sm"
               >
-                <Share2 className="mr-2 h-4 w-4" />
+                <Linkedin className="mr-2 h-4 w-4" />
                 LI
               </Button>
               <Button
@@ -132,7 +132,7 @@ const TextGenerator = () => {
                 variant="outline"
                 size="sm"
               >
-                <Share2 className="mr-2 h-4 w-4" />
+                <Twitter className="mr-2 h-4 w-4" />
                 X
               </Button>
             </div>

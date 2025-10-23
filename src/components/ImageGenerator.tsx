@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { Loader2, Download, Copy, Share2 } from "lucide-react";
+import { Loader2, Download, Copy, Instagram, Facebook, Linkedin, Twitter } from "lucide-react";
 
 const ImageGenerator = () => {
   const [prompt, setPrompt] = useState("");
@@ -120,7 +120,7 @@ const ImageGenerator = () => {
                 variant="outline"
                 size="sm"
               >
-                <Share2 className="mr-2 h-4 w-4" />
+                <Instagram className="mr-2 h-4 w-4" />
                 IG
               </Button>
               <Button
@@ -131,7 +131,7 @@ const ImageGenerator = () => {
                 variant="outline"
                 size="sm"
               >
-                <Share2 className="mr-2 h-4 w-4" />
+                <Facebook className="mr-2 h-4 w-4" />
                 FB
               </Button>
               <Button
@@ -142,7 +142,7 @@ const ImageGenerator = () => {
                 variant="outline"
                 size="sm"
               >
-                <Share2 className="mr-2 h-4 w-4" />
+                <Linkedin className="mr-2 h-4 w-4" />
                 LI
               </Button>
               <Button
@@ -153,7 +153,7 @@ const ImageGenerator = () => {
                 variant="outline"
                 size="sm"
               >
-                <Share2 className="mr-2 h-4 w-4" />
+                <Twitter className="mr-2 h-4 w-4" />
                 X
               </Button>
             </div>
