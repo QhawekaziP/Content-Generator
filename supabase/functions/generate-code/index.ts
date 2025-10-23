@@ -11,7 +11,7 @@ serve(async (req) => {
   }
 
   try {
-    const { prompt } = await req.json();
+    const { prompt, language = "javascript" } = await req.json();
     
     if (!prompt) {
       return new Response(
@@ -38,7 +38,7 @@ serve(async (req) => {
         messages: [
           {
             role: "system",
-            content: "You are an expert programmer. Generate clean, well-documented, and production-ready code based on the user's request. Include helpful comments and follow best practices.",
+            content: `You are an expert programmer. Generate clean, well-documented, production-ready ${language} code based on the user's request. Include helpful comments and follow best practices. Return ONLY the code without any markdown formatting, without asterisks for bold text, and without explanations. Plain code only.`,
           },
           {
             role: "user",

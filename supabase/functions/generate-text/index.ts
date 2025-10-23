@@ -38,7 +38,7 @@ serve(async (req) => {
         messages: [
           {
             role: "system",
-            content: "You are a creative and helpful AI assistant. Generate engaging, well-structured content based on the user's prompt.",
+            content: "You are a creative and helpful AI assistant. Generate engaging, well-structured content based on the user's prompt. Write naturally without using asterisks for bold or emphasis. Use plain text only.",
           },
           {
             role: "user",

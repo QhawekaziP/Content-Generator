@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Loader2, Copy, Share2 } from "lucide-react";
 
 const CodeGenerator = () => {
   const [prompt, setPrompt] = useState("");
+  const [language, setLanguage] = useState("javascript");
   const [generatedCode, setGeneratedCode] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -21,7 +23,7 @@ const CodeGenerator = () => {
 
     try {
       const { data, error } = await supabase.functions.invoke("generate-code", {
-        body: { prompt },
+        body: { prompt, language },
       });
 
       if (error) throw error;
@@ -50,13 +52,34 @@ const CodeGenerator = () => {
 
   return (
     <div className="space-y-6">
-      <Textarea
-        placeholder="Describe the code you need..."
-        value={prompt}
-        onChange={(e) => setPrompt(e.target.value)}
-        className="min-h-[100px] resize-none"
-        disabled={isLoading}
-      />
+      <div className="space-y-3">
+        <Select value={language} onValueChange={setLanguage} disabled={isLoading}>
+          <SelectTrigger>
+            <SelectValue placeholder="Select programming language" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="javascript">JavaScript</SelectItem>
+            <SelectItem value="typescript">TypeScript</SelectItem>
+            <SelectItem value="python">Python</SelectItem>
+            <SelectItem value="java">Java</SelectItem>
+            <SelectItem value="csharp">C#</SelectItem>
+            <SelectItem value="cpp">C++</SelectItem>
+            <SelectItem value="go">Go</SelectItem>
+            <SelectItem value="rust">Rust</SelectItem>
+            <SelectItem value="php">PHP</SelectItem>
+            <SelectItem value="ruby">Ruby</SelectItem>
+            <SelectItem value="swift">Swift</SelectItem>
+            <SelectItem value="kotlin">Kotlin</SelectItem>
+          </SelectContent>
+        </Select>
+        <Textarea
+          placeholder="Describe the code you need..."
+          value={prompt}
+          onChange={(e) => setPrompt(e.target.value)}
+          className="min-h-[100px] resize-none"
+          disabled={isLoading}
+        />
+      </div>
 
       <Button 
         onClick={handleGenerate} 
